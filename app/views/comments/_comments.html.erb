@@ -1,0 +1,57 @@
+<% comments.each do |parent, children| %>
+  <div id="comment_id_<%= parent.id %>">
+    <div class="comment-wrap">
+      <%= image_tag parent.author.avatar.variant(resize_to_limit: [50, 50]) if parent.author.avatar.present? %>
+      <strong><%= parent.author.display_author %>:</strong>
+      <% if parent.created_at < parent.updated_at %><p class="comment-edit">Comment edited</p>
+      <% end %>
+      <%= parent.likes.where(vote_value: 1).count %> <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> |
+      <%= parent.likes.where(vote_value: -1).count %> <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> |
+      <%= parent.likes.map(&:vote_value).sum %> <i class="fa fa-star-half-o" aria-hidden="true"></i>
+      <div><%= parent.body %></div>
+      <div class="comment-add"> added <%= distance_of_time_in_words(parent.updated_at, Time.now) %> ago</div>
+    </div>
+    <% if current_author %>
+      <div class="display-author"><%= button_to '👍', post_comment_likes_path(@post, comment_id: parent.id), remote: true, :class => 'btn btn-info' %></div>
+      <div class="display-author"><%= button_to '👎', post_comment_like_path(@post, comment_id: parent.id), method: :delete, remote: true, :class => 'btn btn-info' %></div>
+    <% end %>
+    <% if current_author %>
+      <div class="text-right mb-3 reply-wrap">
+        <div id="reply_btn_<%= parent.id %>" class="reply_btn display-author">
+                <button id='reply_btn' class='btn btn-info reply'><i class="fa fa-reply"></i></button>
+        <%#= link_to (fa_icon "reply"), new_post_comment_path(@post, comment_id: parent.id ), remote: true, class: "btn btn-info reply" %>
+        </div>
+        <div class="display-author">
+        <% if parent.author == current_author %>
+        <%= link_to (fa_icon "pencil"), edit_post_comment_path(parent.post, parent),
+                    class: "btn btn-info" %>
+        <%= link_to (fa_icon "trash-o"), post_comment_path(@post, parent),
+                    method: :delete,
+                    remote: true,
+                    data: {confirm: 'Are you sure you want to delete the comment?'},
+                    class: "btn btn-danger" %>
+        <% end %>
+        </div>
+        <div id="hide" class="form-reply-show">
+          <%= render 'comments/form', parent_id: parent.id %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%# if current_author %>
+<!--    <div id="hide" class="form-reply-show">-->
+      <%#= render 'comments/form', parent_id: parent.id %>
+<!--    </div>-->
+  <%# end %>
+  <% if flash[:comment_error].present? %>
+    <div id="error_explanation">
+      <h5> Cannot be saved: </h5>
+      <ul>
+        <li><%= flash[:comment_error] %></li>
+      </ul>
+    </div>
+  <% end %>
+  <div class="comment-level">
+    <%= render 'comments/comments', comments: children %>
+  </div>
+<% end %>

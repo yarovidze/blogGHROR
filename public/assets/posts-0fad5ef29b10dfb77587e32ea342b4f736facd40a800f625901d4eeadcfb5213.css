@@ -1,0 +1,94 @@
+/* line 5, app/assets/stylesheets/posts.scss */
+.header {
+  background-image: url(/assets/blog-d516f2455babd9450e3d7c20a477dbc86004948492986f0fd8f56ecdc995a182.jpg);
+  padding: 20px 0 100px;
+  background-position: 50% 50%;
+  background-size: cover;
+  margin-bottom: 20px;
+}
+
+/* line 13, app/assets/stylesheets/posts.scss */
+.header h1 {
+  color: white;
+}
+
+/* line 16, app/assets/stylesheets/posts.scss */
+.post-wrap {
+  padding: 5px;
+}
+
+/* line 19, app/assets/stylesheets/posts.scss */
+.post-list {
+  padding: 10px;
+  margin: 5px;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* line 24, app/assets/stylesheets/posts.scss */
+.author-header {
+  color: white;
+}
+
+/* line 27, app/assets/stylesheets/posts.scss */
+.auth-warning {
+  color: white;
+}
+
+/* line 30, app/assets/stylesheets/posts.scss */
+.author-post-item {
+  font-size: 12px;
+  font-style: italic;
+  text-align: right;
+  margin: 10px 0;
+}
+
+/* line 36, app/assets/stylesheets/posts.scss */
+.comment-wrap {
+  position: relative;
+}
+
+/* line 39, app/assets/stylesheets/posts.scss */
+.comment-add {
+  position: absolute;
+  font-size: 10px;
+  font-style: italic;
+  color: #6c757d;
+  right: 5px;
+  top: -5px;
+}
+
+/* line 47, app/assets/stylesheets/posts.scss */
+.comment-status {
+  position: absolute;
+  font-size: 10px;
+  font-style: italic;
+  color: #ffffff;
+  padding: 0 5px;
+  background-color: #dc3545;
+  border-radius: 3px;
+  right: 5px;
+  top: 10px;
+}
+
+/* line 58, app/assets/stylesheets/posts.scss */
+.comment-edit {
+  position: absolute;
+  font-size: 10px;
+  font-style: italic;
+  color: #6c757d;
+  right: 5px;
+  top: 25px;
+}
+
+/* line 66, app/assets/stylesheets/posts.scss */
+.header-stick {
+  padding: 5px 0;
+}
+
+/* line 69, app/assets/stylesheets/posts.scss */
+.display-author {
+  display: inline-block;
+  vertical-align: sub;
+  font-size: 16px;
+  margin: 0;
+}

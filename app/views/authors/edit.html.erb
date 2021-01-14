@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <h3 class="text-center">Edit profile</h3>
+  <%= form_with(model: @author) do |f| %>
+    <div class="field py-2">
+      <%= f.label :first_name, class: "pb-2" %>
+      <%= f.text_field :first_name, class: "form-control" %>
+    </div>
+    <div class="field py-2">
+      <%= f.label :last_name, class: "pb-2" %>
+      <%= f.text_field :last_name, class: "form-control" %>
+    </div>
+    <div class="field py-2">
+      <%= f.label :avatar, class: "pb-2" %>
+      <%= f.file_field :avatar, class: "form-control" %>
+    </div>
+    <div class="field py-2">
+      <%= f.submit "Save", class: "btn btn-info" %>
+    </div>
+  <% end %>
+</div>

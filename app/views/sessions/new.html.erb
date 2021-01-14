@@ -1,0 +1,16 @@
+<div class="container">
+  <h3 class="text-center">Log in</h3>
+  <%= form_with url: sessions_path do |f| %>
+      <div class="field py-2">
+        <%= f.label :email, class: "pb-2" %>
+        <%= f.text_field :email, class: "form-control"  %>
+      </div>
+      <div class="field py-2">
+        <%= f.label :password, class: "pb-2" %>
+        <%= f.password_field :password, class: "form-control"  %>
+      </div>
+      <div class="field py-2">
+        <%= f.submit "Log in", class: "btn btn-info" %>
+      </div>
+  <% end %>
+</div>

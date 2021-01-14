@@ -1,0 +1,10 @@
+<section class="header">
+  <div class="container">
+    <div class="header-title"><h1>Create new post</h1></div>
+  </div>
+</section>
+<div class="container">
+  <%= render 'form', post: @post %>
+  <%= link_to 'Back', posts_path, class: "btn btn btn-info" %>
+</div>
+

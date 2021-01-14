@@ -1,0 +1,29 @@
+/* line 5, app/assets/stylesheets/posts.scss */
+.header {
+  background-image: url(/assets/blog-d516f2455babd9450e3d7c20a477dbc86004948492986f0fd8f56ecdc995a182.jpg);
+  padding: 20px 0 100px;
+  background-position: 50% 50%;
+  background-size: cover;
+  margin-bottom: 20px;
+}
+
+/* line 13, app/assets/stylesheets/posts.scss */
+.header h1 {
+  color: white;
+}
+
+/* line 16, app/assets/stylesheets/posts.scss */
+.post-wrap {
+  padding: 5px;
+}
+
+/* line 19, app/assets/stylesheets/posts.scss */
+.author-header {
+  color: white;
+}
+
+/* line 22, app/assets/stylesheets/posts.scss */
+.autor-post-item {
+  font-size: 12px;
+  font-style: italic;
+}

@@ -1,0 +1,15 @@
+<div class="container">
+    <p id="notice"><%= notice %></p>
+      <h3 class="text-center">Edit comment</h3>
+      <%= form_with model: [@post, @comment] do |form| %>
+
+        <div class="field py-2">
+          <%= form.label "Comment", class: "pb-2" %>
+          <%= form.text_area :body, class: "form-control" %>
+        </div>
+
+        <div class="actions py-2">
+          <%= form.submit(class: "btn btn-info") %>
+        </div>
+      <% end %>
+</div>

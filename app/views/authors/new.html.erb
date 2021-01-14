@@ -1,0 +1,43 @@
+<div class="container">
+  <h3 class="text-center">Register</h3>
+  <%= form_with(model: @author) do |f| %>
+    <% if @author.errors.any? %>
+      <div class="error_messages">
+        <h2>Form is invalid</h2>
+        <ul>
+          <% @author.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field py-2">
+      <%= f.label :first_name, class: "pb-2" %>
+      <%= f.text_field :first_name, class: "form-control" %>
+    </div>
+    <div class="field py-2">
+      <%= f.label :last_name, class: "pb-2" %>
+      <%= f.text_field :last_name, class: "form-control" %>
+    </div>
+    <div class="field py-2">
+      <%= f.label :avatar, class: "pb-2" %>
+      <%= f.file_field :avatar, class: "form-control" %>
+    </div>
+    <div class="field py-2">
+      <%= f.label :email, class: "pb-2" %>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+    <div class="field py-2">
+      <%= f.label :password, class: "pb-2" %>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+    <div class="field py-2">
+      <%= f.label :password_confirmation, class: "pb-2" %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+    </div>
+    <div class="py-3">
+      <%= f.submit "Sign Up", class: "btn btn-info" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,24 @@
+<div class="row register-wrapp d-flex justify-content-center align-items-center">
+  <div class="w-50 mx-auto">
+    <div class="register-card">
+      <div class="card-body p-5">
+        <h5 class="fs-2 text-center pb-3">Log in</h5>
+        <%= form_with url: login_path, class: "d-flex flex-column align-items-center" do |f| %>
+          <div class="register-form-group w-100">
+            <div class="py-2 register-form-group-item">
+              <%= f.label :email %>
+              <%= f.text_field :email %>
+            </div>
+            <div class="py-2 register-form-group-item">
+              <%= f.label :password1 %>
+              <%= f.password_field :password %>
+            </div>
+            <div class="py-3">
+              <%= f.submit "Log in", class: "btn btn-info" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

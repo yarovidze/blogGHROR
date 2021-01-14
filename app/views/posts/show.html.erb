@@ -1,0 +1,61 @@
+<section class="container header-stick">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="search-block">
+        <%= form_with url: search_posts_path, method: :get, local: true do |form| %>
+          <%= form.text_field :query %>
+          <%= form.submit "Search", :class => "btn btn-info" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="text-right">
+        <% if current_author %>
+          <h3 class="display-author">Hello, <%= current_author.display_author %></h3>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="header">
+  <div class="container">
+    <div class="header-title"><h1><strong><%= @post.title %></strong></h1></div>
+    <p class="author-header"><strong>Author:</strong> <%= @post.name %></p>
+    <%= image_tag @post.author.avatar.variant(resize_to_limit: [50, 50]) if @post.author.avatar.present? %>
+  </div>
+</section>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <%= image_tag(@post.image, width: "200", class: "img-fluid py-5") if @post.image.present? %>
+      <p>
+        <%= @post.content %>
+      </p>
+      <%= link_to (fa_icon "undo", text: "Back to all"), posts_path, class: "btn btn-info" %>
+      <% if @post.author == current_author %>
+        <%= link_to (fa_icon "pencil", text: "Edit post"), edit_post_path(@post), class: "btn btn-info" %>
+      <% end %>
+    </div>
+    <div class="col-lg-4">
+      <h5>Comments:</h5>
+        <div class="new-comment">
+          <% @comments.each do |comment| %>
+            <div>
+              <%= render 'comments/comments', comments: comment.subtree.arrange %>
+            </div>
+          <% end %>
+        </div>
+      <h5> Add a comment:</h5>
+      <% if current_author %>
+        <%= render 'comments/form', parent_id: nil %>
+      <% else %>
+        <p class="py-4">You must login before add comment</p>
+        <%= link_to "Login", '/sessions/new', class: "btn btn-info", method: :get %>
+        <%= link_to "Sign Up", '/authors/new', class: "btn btn-info", method: :get %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+</div>
