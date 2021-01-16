@@ -66,7 +66,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.where('title LIKE ? OR content LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%")
+    @posts = Post.where('title LIKE ? OR content LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").paginate(page: params[:page], per_page: 3)
     render :index
   end
 
